@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import "./App.css";
+import axios from "axios";
 
 function App() {
+  useEffect(() => {
+    axios
+      .get("https://alemdocodigo.herokuapp.com/list_posts")
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch(() => {
+        console.log("deu errado dnv");
+      });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="cards">
+        <div className="card">
+          <div className="card-body">
+            <h1>Teste prova</h1>
+            <div className="line"></div>
+            <h2>buildo</h2>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
